@@ -206,6 +206,7 @@ table{
     margin-top:10px;
     position:relative;
     z-index:2;
+    table-layout:fixed;
 }
 
 th{
@@ -220,8 +221,8 @@ td{
     padding:5px;
     text-align:center;
     font-size:11px;
+    overflow:hidden;
 }
-
 /* INPUT TABLE */
 
 .share-input,
@@ -346,43 +347,46 @@ td{
 
 @media(max-width:700px){
 
-    table{
+table{
     width:100%;
+    table-layout:auto;
 }
 
 td,th{
-    white-space:nowrap;
+    white-space:normal;
 }
 
-.share-input{
-    min-width:55px;
+.share-input,
+.name-input{
+    width:100%;
+    min-width:0;
 }
 
-    .invoice{
-        width:100%;
-    }
+.invoice{
+    width:100%;
+}
 
-    .bottom-buttons{
-        width:100%;
-    }
+.bottom-buttons{
+    width:100%;
+}
 
-    .top-section{
-        flex-direction:column;
-    }
+.top-section{
+    flex-direction:column;
+}
 
-    .customer,
-    .details{
-        width:100%;
-    }
+.customer,
+.details{
+    width:100%;
+}
 
-    .header{
-        flex-direction:column;
-        gap:10px;
-    }
+.header{
+    flex-direction:column;
+    gap:10px;
+}
 
-    .right-header{
-        text-align:left;
-    }
+.right-header{
+    text-align:left;
+}
 
 }
 

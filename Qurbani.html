@@ -227,13 +227,16 @@ td{
 .share-input,
 .name-input{
     width:100%;
+    max-width:100%;
     border:none;
     background:transparent;
     outline:none;
     font-size:11px;
     font-family:'Poppins',sans-serif;
+    display:block;
+    box-sizing:border-box;
 }
-
+    
 /* REMOVE */
 
 .remove-btn{
@@ -437,12 +440,12 @@ REPORTING TIME
 </div>
 
 <div class="small-label">
-DATE OF BOOKING
-</div>
-
-<div class="detail-box">
-<input type="date">
-</div>
+    DATE OF BOOKING
+    </div>
+    
+    <div class="detail-box">
+    <input type="date" id="bookingDate">
+    </div>
 
 <div class="small-label">
 DATE OF DELIVERY
@@ -823,7 +826,12 @@ alert("Upload Failed");
 
 }
     
-    updateTotal();
+    /* AUTO CURRENT BOOKING DATE */
+
+document.getElementById("bookingDate").value =
+new Date().toISOString().split('T')[0];
+
+updateTotal();
 
 
 

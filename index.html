@@ -429,6 +429,14 @@ td,th{
 
 <div class="top-section">
 
+    <div class="small-label">
+INVOICE NO
+</div>
+
+<div class="detail-box">
+<input type="text" id="invoiceNo" readonly>
+</div>
+
 <div class="customer">
 
 <div class="input-box">
@@ -846,6 +854,30 @@ alert("Upload Failed");
 
 document.getElementById("bookingDate").value =
 new Date().toISOString().split('T')[0];
+
+
+    /* AUTO INVOICE NUMBER */
+
+function generateInvoiceNo(){
+
+let lastInvoice =
+localStorage.getItem("invoiceCounter") || 0;
+
+lastInvoice++;
+
+localStorage.setItem(
+"invoiceCounter",
+lastInvoice
+);
+
+document.getElementById(
+"invoiceNo"
+).value =
+"NQC-" + String(lastInvoice).padStart(4,'0');
+
+}
+
+generateInvoiceNo();
 
 updateTotal();
 

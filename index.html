@@ -839,6 +839,18 @@ body: JSON.stringify(payload)
 
 alert("Saved to Google Sheet");
 
+/* UPDATE ONLY AFTER SAVE */
+
+let lastInvoice =
+localStorage.getItem("invoiceCounter") || 0;
+
+lastInvoice++;
+
+localStorage.setItem(
+"invoiceCounter",
+lastInvoice
+);
+
 window.print();
 
 }
@@ -861,28 +873,23 @@ document.getElementById("bookingDate").value =
 new Date().toISOString().split('T')[0];
 
 
-    /* AUTO INVOICE NUMBER */
+    /* SHOW CURRENT INVOICE */
 
-function generateInvoiceNo(){
+function loadInvoiceNo(){
 
 let lastInvoice =
 localStorage.getItem("invoiceCounter") || 0;
 
-lastInvoice++;
-
-localStorage.setItem(
-"invoiceCounter",
-lastInvoice
-);
-
 document.getElementById(
 "invoiceNo"
 ).value =
-"NQC-" + String(lastInvoice).padStart(4,'0');
+"NQC-" +
+String(Number(lastInvoice)+1)
+.padStart(4,'0');
 
 }
 
-generateInvoiceNo();
+loadInvoiceNo();
 
 updateTotal();
 
